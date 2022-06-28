@@ -1,0 +1,138 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Ini adalah dokumentasi posting artikel",
+    "version": "1.0.0",
+    "title": "Article API",
+    "contact": {
+      "email": "binar@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "article",
+      "description": "Article Resources"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/articles": {
+      "get": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "list all available articles",
+        "description": "described hit",
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "responses": {
+          "200": {
+            "description": "success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "This is title"
+                  },
+                  "body": {
+                    "type": "string",
+                    "example": "This is body"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "error"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Error server"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Article"
+        ],
+        "summary": "Add new article",
+        "description": "Create new",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Article object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "example": "This is title"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "This is body"
+                }
+              }
+            }
+          }
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Successfully create new article",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "title": {
+                  "type": "string",
+                  "example": "This is title"
+                },
+                "body": {
+                  "type": "string",
+                  "example": "This is body"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
